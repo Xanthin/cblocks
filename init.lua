@@ -11,7 +11,7 @@ local colours = {
 	{"orange",     "Orange",     "#ff840170"},
 	{"pink",       "Pink",       "#ff65b570"},
 	{"red",        "Red",        "#ff000070"},
-	{"violet",     "Violet",     "#ea05ff70"},
+	{"violet",     "Violet",     "#2000c970"},
 	{"white",      "White",      "#abababc0"},
 	{"yellow",     "Yellow",     "#e3ff0070"},
 }
@@ -49,6 +49,27 @@ minetest.register_craft({
 	output = "cblocks:stonebrick_".. colours[i][1] .. " 2",
 	recipe = {
 		{"default:stonebrick","default:stonebrick", "dye:" .. colours[i][1]},
+	}
+})
+
+-- glass
+
+minetest.register_node( "cblocks:glass_" .. colours[i][1], {
+	description = colours[i][2] .. " Glass",
+	tiles = {"cblocks.png^[colorize:" .. colours[i][3]},
+	drawtype = "glasslike",
+	paramtype = "light",
+	sunlight_propagates = true,
+	use_texture_alpha = true,
+	is_ground_content = false,
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+minetest.register_craft({
+	output = "cblocks:glass_".. colours[i][1] .. " 2",
+	recipe = {
+		{"default:glass","default:glass", "dye:" .. colours[i][1]},
 	}
 })
 
